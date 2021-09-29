@@ -46,9 +46,10 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.1")
 
     hilt()
-    retrofit()
     activityX()
     lifecycle()
+    retrofit()
+
 
 
     testImplementation("junit:junit:4.13.2")

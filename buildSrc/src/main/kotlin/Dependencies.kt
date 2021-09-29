@@ -1,8 +1,11 @@
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
+const val kotlinVersion = "1.5.30"
+
 fun DependencyHandler.coroutines() {
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.4")
+    val version = "1.3.4"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$version")
 }
 
 fun DependencyHandler.activityX() {
@@ -11,8 +14,9 @@ fun DependencyHandler.activityX() {
 
 
 fun DependencyHandler.lifecycle() {
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
+    val version = "2.2.0"
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$version")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$version")
 }
 
 fun DependencyHandler.constraintLayout() {
@@ -40,14 +44,22 @@ fun DependencyHandler.paging() {
 }
 
 fun DependencyHandler.retrofit() {
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    val version = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$version")
+    implementation("com.squareup.retrofit2:converter-moshi:$version")
     implementation("com.squareup.okhttp3:logging-interceptor:4.8.0")
 }
 
+fun DependencyHandler.moshi() {
+    val version = "1.12.0"
+    implementation("com.squareup.moshi:moshi:$version")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$version")
+}
+
 fun DependencyHandler.glide() {
-    implementation("com.github.bumptech.glide:glide:4.11.0")
-    kapt("com.github.bumptech.glide:compiler:4.11.0")
+    val version = "4.11.0"
+    implementation("com.github.bumptech.glide:glide:$version")
+    kapt("com.github.bumptech.glide:compiler:$version")
 }
 
 fun DependencyHandler.mockWebService() {
