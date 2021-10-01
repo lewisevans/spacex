@@ -6,6 +6,7 @@ fun DependencyHandler.coroutines() {
     val version = "1.3.4"
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$version")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$version")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$version")
 }
 
 fun DependencyHandler.activityX() {
@@ -53,7 +54,9 @@ fun DependencyHandler.retrofit() {
 fun DependencyHandler.moshi() {
     val version = "1.12.0"
     implementation("com.squareup.moshi:moshi:$version")
+    implementation("com.squareup.moshi:moshi-adapters:$version")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$version")
+
 }
 
 fun DependencyHandler.glide() {

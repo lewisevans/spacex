@@ -12,7 +12,8 @@ class MainViewModel @Inject constructor(
     private val getFalconNineLaunchesUseCase: GetFalconNineLaunchesUseCase
 ) : ViewModel() {
 
-    fun getFalconNineLaunches() = liveData {
+    // TODO: Could use MVI here but personally I feel MVVM is preferable
+    val falconNineLaunches = liveData {
         emit(DomainResponse.Loading)
         emit(getFalconNineLaunchesUseCase.execute())
     }

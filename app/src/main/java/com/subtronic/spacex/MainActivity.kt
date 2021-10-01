@@ -3,10 +3,12 @@ package com.subtronic.spacex
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.subtronic.domain.base.DomainResponse
 import com.subtronic.domain.launch.LaunchItemDataDomainEntity
+import com.subtronic.spacex.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,11 +16,14 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainViewModel by viewModels()
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         with(viewModel){
-            getFalconNineLaunches().observe(this@MainActivity, {
+            falconNineLaunches.observe(this@MainActivity, {
                 when(it){
                     is DomainResponse.Content -> {
                         weHaveContent(it.result)
@@ -35,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun weHaveContent(result: List<LaunchItemDataDomainEntity>) {
-        Log.d("Result", "We have a result: $result")
+        binding.mainViewLoading.visibility = View.INVISIBLE
     }
 
     private fun weHaveAnError(message: String) {
@@ -43,6 +48,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun weAreLoadingData() {
-        Log.d("Loading", "I should show the loading spinner here")
+        binding.mainViewLoading.visibility = View.VISIBLE
     }
 }

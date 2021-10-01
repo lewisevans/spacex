@@ -1,6 +1,5 @@
 package com.subtronic.data.launch
 
-import com.subtronic.data.api.entity.LaunchItemDataEntity
 import com.subtronic.data.domainResponse
 import com.subtronic.domain.base.DomainResponse
 import com.subtronic.domain.launch.LaunchItemDataDomainEntity
@@ -17,10 +16,4 @@ class LaunchRepositoryImpl @Inject constructor(
 
 }
 
-private fun LaunchItemDataEntity.toDomain() = LaunchItemDataDomainEntity(
-    name = name ?: "No name provided",
-    launchDate = "",
-    success = success?.let { if (it) "True" else "False" } ?: "False",
-    image = ""
-)
 

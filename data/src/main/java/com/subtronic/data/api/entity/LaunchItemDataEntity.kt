@@ -3,7 +3,9 @@ package com.subtronic.data.api.entity
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import java.util.*
 
+// TODO// Don't use java.util.Date
 @JsonClass(generateAdapter = true)
 data class LaunchItemDataEntity(
     @field:Json(name = "auto_update") val autoUpdate: Boolean?,
@@ -13,7 +15,7 @@ data class LaunchItemDataEntity(
     @field:Json(name = "date_local") val dateLocal: String?,
     @field:Json(name = "date_precision") val datePrecision: String?,
     @field:Json(name = "date_unix") val dateUnix: Int?,
-    @field:Json(name = "date_utc") val dateUtc: String?,
+    @field:Json(name = "date_utc") val dateUtc: Date?,
     @field:Json(name = "details") val details: String?,
     @field:Json(name = "failures") val failures: List<Any>?,
     @field:Json(name = "fairings") val fairings: Any?,
