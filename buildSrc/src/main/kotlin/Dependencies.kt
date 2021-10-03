@@ -25,10 +25,12 @@ fun DependencyHandler.constraintLayout() {
 }
 
 fun DependencyHandler.hilt() {
-    implementation("com.google.dagger:hilt-android:2.38.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha01")
-    kapt("androidx.hilt:hilt-compiler:1.0.0-alpha01")
+    val dagger = "2.38.1"
+    val hilt = "1.0.0-alpha01"
+    implementation("com.google.dagger:hilt-android:$dagger")
+    kapt("com.google.dagger:hilt-android-compiler:$dagger")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:$hilt")
+    kapt("androidx.hilt:hilt-compiler:$hilt")
 }
 
 fun DependencyHandler.room() {
