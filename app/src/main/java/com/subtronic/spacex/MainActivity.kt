@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.subtronic.domain.base.DomainResponse
 import com.subtronic.domain.launch.LaunchItemDataDomainEntity
 import com.subtronic.spacex.databinding.ActivityMainBinding
@@ -18,9 +20,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    private val mainAdapter = MainAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        with(binding.mainViewRecycler) {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = mainAdapter
+        }
         setContentView(binding.root)
         with(viewModel){
             falconNineLaunches.observe(this@MainActivity, {
@@ -41,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun weHaveContent(result: List<LaunchItemDataDomainEntity>) {
         binding.mainViewLoading.visibility = View.INVISIBLE
+        mainAdapter.items = result
     }
 
     private fun weHaveAnError(message: String) {

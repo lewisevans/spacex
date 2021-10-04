@@ -44,7 +44,6 @@ class MainViewModelTest {
 
     @Test
     fun `GIVEN I want a list of launches WHEN getFalconNineLaunches is called THEN Loading is the first emitted value followed by Content`() {
-        //mockitoWhen(useCase.execute()).thenAnswer { any() }
         coEvery { useCase.execute() } answers { DomainResponse.Content(emptyList()) }
         val loading = viewModel.falconNineLaunches.getOrAwaitValue()
         assertEquals(loading, DomainResponse.Loading)
@@ -55,7 +54,6 @@ class MainViewModelTest {
 
     @Test
     fun `GIVEN I want a list of launches WHEN getFalconNineLaunches is called AND there is an error returned THEN Loading is the first emitted value followed by Error`() {
-        //mockitoWhen(useCase.execute()).thenAnswer { any() }
         coEvery { useCase.execute() } answers { DomainResponse.Error(222, "Error") }
         val loading = viewModel.falconNineLaunches.getOrAwaitValue()
         assertEquals(loading, DomainResponse.Loading)

@@ -64,6 +64,7 @@ fun DependencyHandler.moshi() {
 fun DependencyHandler.glide() {
     val version = "4.11.0"
     implementation("com.github.bumptech.glide:glide:$version")
+    implementation("com.github.bumptech.glide:recyclerview-integration:$version")
     kapt("com.github.bumptech.glide:compiler:$version")
 }
 
