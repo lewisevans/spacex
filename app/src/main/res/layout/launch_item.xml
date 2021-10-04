@@ -9,6 +9,7 @@
         android:id="@+id/launch_badge"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:padding="@dimen/small_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -16,17 +17,21 @@
 
     <TextView
         android:id="@+id/tv_heading"
+        style="@style/TextViewHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/medium_padding"
+        app:layout_constraintBottom_toTopOf="@+id/tv_launch_date"
         app:layout_constraintStart_toEndOf="@+id/launch_badge"
-        app:layout_constraintTop_toTopOf="@+id/launch_badge"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Heading" />
 
     <TextView
         android:id="@+id/tv_launch_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="@dimen/medium_padding"
+        app:layout_constraintBottom_toTopOf="@+id/tv_outcome"
         app:layout_constraintStart_toEndOf="@+id/launch_badge"
         app:layout_constraintTop_toBottomOf="@+id/tv_heading"
         tools:text="Launch date" />
@@ -35,17 +40,17 @@
         android:id="@+id/tv_outcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginStart="@dimen/medium_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/launch_badge"
         app:layout_constraintTop_toBottomOf="@+id/tv_launch_date"
         tools:text="Outcome" />
 
-    <androidx.constraintlayout.widget.Guideline
+    <androidx.constraintlayout.widget.Barrier
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/medium_padding"
-        android:orientation="vertical"
-        app:layout_constraintStart_toEndOf="@id/launch_badge" />
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="launch_badge" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

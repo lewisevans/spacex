@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
 import com.subtronic.domain.launch.LaunchItemDataDomainEntity
 import com.subtronic.spacex.databinding.LaunchItemBinding
+import java.text.DateFormat
 
 class MainAdapter : Adapter<MainAdapter.LaunchItemViewHolder>() {
+
+    private val formatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
 
     private var _items: List<LaunchItemDataDomainEntity> = emptyList()
     var items: List<LaunchItemDataDomainEntity>
@@ -35,7 +38,10 @@ class MainAdapter : Adapter<MainAdapter.LaunchItemViewHolder>() {
                         .load(image)
                         .into(launchBadge)
                     tvHeading.text = name
-                    tvLaunchDate.text = launchDate.toString()
+                    tvLaunchDate.text = itemView.context.getString(
+                        R.string.main_view_launch_date,
+                        formatter.format(launchDate)
+                    )
                     tvOutcome.text = success
                 }
             }

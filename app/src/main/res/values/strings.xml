@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">spacex</string>
+    <string name="main_view_launch_date">Launch date: %1$s</string>
 </resources>
